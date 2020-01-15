@@ -1,24 +1,13 @@
-$("#enter-button").click(function () {
+$("#button").click(function () {
     $('html, body').animate({
         scrollTop: 802
+    }, 2000);
+})
+$(".clicker-two").click(function () {
+    $('html, body').animate({
+        scrollTop: 1604
     }, 2000);
 })
 
 
 
-const signs = document.querySelectorAll('x-sign')
-const randomIn = (min, max) => (
-    Math.floor(Math.random() * (max - min + 1) + min)
-)
-
-const mixupInterval = el => {
-    const ms = randomIn(2000, 4000)
-    el.style.setProperty('--interval', `${ms}ms`)
-}
-
-signs.forEach(el => {
-    mixupInterval(el)
-    el.addEventListener('webkitAnimationIteration', () => {
-        mixupInterval(el)
-    })
-})

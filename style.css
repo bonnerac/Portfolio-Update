@@ -2,17 +2,19 @@ html,
 body {
   margin: 0;
   padding: 0;
+  /* overflow: hidden; */
 }
 body {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
-div {
+.panel {
 box-sizing: border-box;
   height: 100%;
   width: 100%;
   font-size: 20px;
-  padding: 10px;
+  padding: 30px 60px 30px 60px;
+  position: relative;
  
 }
 #panel-one{
@@ -21,35 +23,114 @@ box-sizing: border-box;
 #panel-two{
     background-color: blueviolet;
 }
-#enter-button{
-    display: block;
-        position:relative;
-        top:40%; 
-        left:40%;
+#panel-three{
+  background-color: green;
 }
-x-sign {
-    font-size: calc(1em + 3vmax);
-    font-family: 'Yellowtail', cursive;
-    --interval: 1s;
+#button {
+  background: green;
+  border: none;
+  border-radius: 25px;
+  color: snow; 
+  cursor: pointer;
+  font-size: 1.25em;
+  letter-spacing: .1em;
+  outline: none;
+  padding: .75em 2em;
+  position: relative; 
+  text-transform: uppercase;
+  margin: auto;
+  top:40%; 
+  left:40%;
+}
+
+#button::before {
+  background: green;
+  border-radius: inherit;
+  content: '';
+  filter: blur(10px); 
+  opacity: .75;
+  position: absolute;
+  transition: all .3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1; 
+}
+#button:hover::before {
+  filter: blur(20px); 
+  opacity: 1;
+}
+@keyframes glow {
+  0% {
+    background: green
+  }
+  25% {
+    background: lightgreen
+  }
+  100% {
+    background: green
+  }
+}
+#button:hover {
+  animation: glow 3s ease-in infinite;
+}
+
+#card-about-me{
+  height: 500px;
+  background-color: red;
+  padding: 15px;
+  cursor: pointer;
+  
+}
+#card-about-me:hover .overlay {
+  opacity: 1;
+}
+#card-contact{
+  height: 500px;
+  background-color: yellow;
+  padding: 15px; 
+  margin-top: 200px;
+  cursor: pointer;
+}
+#card-contact:hover .overlay {
+  opacity: 1;
+}
+#card-portfolio{
+  height: 500px;
+  background-color: blue;
+  padding: 15px; 
+  cursor: pointer;
+}
+#card-portfolio:hover .overlay {
+  opacity: 1;
+}
+.image {
   display: block;
-  text-shadow: 
-    0 0 10px var(--color1),
-    0 0 20px var(--color2),
-    0 0 40px var(--color3),
-    0 0 80px var(--color4);
-  will-change: filter, color;
-  filter: saturate(60%);
-  animation: flicker steps(100) var(--interval) 1s infinite;
-    color: tomato;
-    --color1: orangered;
-    --color2: firebrick;
-    --color3: maroon;
-    --color4: darkred;
-    font-family: Yellowtail;
-  }
-  @keyframes flicker {
-    50% {
-      color: white;
-      filter: saturate(200%) hue-rotate(20deg);
-    }
-  }
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+}
+
